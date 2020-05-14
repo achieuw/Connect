@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Minigame/Prefabs/4-way CableBox.prefab.meta
+guid: a2523d62d7bcc8744a5482b4bda964f5
+PrefabImporter:
+  externalObjects: {}
+=======
+guid: 128e987d567d4e2c824d754223b3f3b0
+ShaderImporter:
+  defaultTextures: []
+>>>>>>> Detection-Meter:Assets/TextMesh Pro/Resources/Shaders/TMP_Bitmap.shader.meta
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

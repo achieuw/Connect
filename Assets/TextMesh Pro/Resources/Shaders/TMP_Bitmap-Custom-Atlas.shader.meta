@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Minigame/Prefabs/2-way CableBox (straight).prefab.meta
+guid: 016f372a8928f0047bbd425c570e1687
+PrefabImporter:
+  externalObjects: {}
+=======
+guid: 48bb5f55d8670e349b6e614913f9d910
+ShaderImporter:
+  defaultTextures: []
+>>>>>>> Detection-Meter:Assets/TextMesh Pro/Resources/Shaders/TMP_Bitmap-Custom-Atlas.shader.meta
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

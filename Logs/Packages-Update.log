@@ -1,0 +1,8 @@
+
+=== Wed Apr  1 10:36:16 2020
+
+Packages were changed.
+Update Mode: resetToDefaultDependencies
+
+The following packages were removed:
+  com.unity.shadergraph@7.1.8
