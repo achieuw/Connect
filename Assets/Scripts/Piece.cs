@@ -22,8 +22,13 @@ public class Piece : MonoBehaviour
 
     float realRotation;
 
+    SpriteRenderer sprite;
+    [SerializeField] Sprite activeSprite;
+    [SerializeField] Sprite defaultSprite;
+
     private void Awake()
     {
+        sprite = GetComponent<SpriteRenderer>();
         realRotation = transform.rotation.eulerAngles.z;
         
         // Rotates the values in runtime on objects that is rotated in editor
@@ -42,13 +47,13 @@ public class Piece : MonoBehaviour
 
     void Update()       
     {
-        if(!startConnector && !endConnector && !firewall)
+        if(!firewall || !endConnector || !startConnector)
         {
-            // Temporary for feedback
-            if (active)
-                gameObject.GetComponent<LineRenderer>().material.color = Color.green;
-            else
-                gameObject.GetComponent<LineRenderer>().material.color = Color.white;
+            if (active && activeSprite != null)
+                sprite.sprite = activeSprite;
+            else if (!active && defaultSprite != null)
+                sprite.sprite = defaultSprite;
+            else return;
         }
 
         if (transform.rotation.eulerAngles.z != realRotation)

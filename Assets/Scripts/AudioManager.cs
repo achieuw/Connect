@@ -5,6 +5,7 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance { get; private set; }
+    public bool toggleSound = true;
 
     public enum Sound
     {
@@ -37,8 +38,14 @@ public class AudioManager : MonoBehaviour
     {
         GameObject soundGameObject = new GameObject("Sound");
         AudioSource audioSource = soundGameObject.AddComponent<AudioSource>();
-        //audioSource.PlayOneShot(GetAudioClip(sound));
-        audioSource.PlayOneShot(GetAudioClip(sound));
+        if (!toggleSound)
+            return;
+        else
+        {
+            audioSource.clip = GetAudioClip(sound);
+            audioSource.Play();
+            Destroy(soundGameObject, audioSource.clip.length);
+        }   
     }
 
     private AudioClip GetAudioClip(Sound sound)

@@ -17,7 +17,6 @@ public class MinigameManager : MonoBehaviour
         public Vector2[] firewallCoords;
         public Piece[,] pieces;
     }
-    [HideInInspector]
     public Puzzle puzzle;
 
     [Tooltip("Shuffle pieces when game start")]
@@ -175,14 +174,13 @@ public class MinigameManager : MonoBehaviour
         }      
         if (puzzle.pieces[w, h].firewall)
         {
-            Lose();
+            // Take away score
             return;
         }
         else
         {
             // Play animation for neighbour piece
             // temp "animation"
-            puzzle.pieces[w, h].GetComponent<LineRenderer>().material.color = Color.green;
             CheckNeighbours(w, h);
         }
             
@@ -261,27 +259,16 @@ public class MinigameManager : MonoBehaviour
     {
         if (WinCondition())
         {
-            // Animation holder
             anim.Play("WinAnimation");
-
-            // Sound holder
             AudioManager.Instance.PlaySound(AudioManager.Sound.Win);
-
-            Debug.Log("Chicken dinner :)");
+            StartCoroutine(Reset(resetTime));
         }
     }
 
     void Lose()
     {
-        // Animation holder
         anim.Play("LoseAnimation");
-
-        // Sound holder/remove if fmod??
         AudioManager.Instance.PlaySound(AudioManager.Sound.Lose);
-
-        // Remove if no reset after win
-        StartCoroutine(Reset(resetTime));
-            Debug.Log("Batsoup dinner :(");
     }
 
     // Toggle the pulse and update the board
@@ -319,7 +306,6 @@ public class MinigameManager : MonoBehaviour
         timer.TogglePause();
         firewall = false;        
         yield return new WaitForSeconds(time);
-        activePulse = false;
         RefreshPuzzle();
         ShuffleBoard();
         timer.ResetTimer(); // temp
